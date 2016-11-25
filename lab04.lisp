@@ -57,6 +57,10 @@
 	)
 )
 
+(defun beforep (x y l)
+ (mem y (mem x l))
+)
+
 ;q06
 (defun rmdup2 (x)
 	(if (equal (cdr x) nil)
@@ -79,3 +83,69 @@
 )
 
 ;q07
+(defun wa (x y)
+ (if (null x)
+  	y
+	(cons (car x) (wa (cdr x) y))
+ )
+)
+
+(defun seki (x y)
+ (if (null y)
+  nil
+  (if (member (car y) x)
+	(cons (car y) (seki x (cdr y)))
+	(seki x (cdr y))
+  )
+ )
+)
+
+(defun sa (x y)
+ (if (null y)
+  x
+  (if (member (car y) x)
+   (sa (rm (car y) x) (cdr y))
+   (sa x (cdr y))
+  )
+ )
+)
+
+;q08
+(defun lookup (key x)
+ (if (equal (cdr x) nil)
+  nil
+  (if (equal (car (car x)) key)
+   	(car x)
+	(lookup key (cdr x))
+  )
+ )
+)
+
+(setf x '((one eins) (two zwei) (three drei) (four vier)))
+
+
+;q09
+(defun sum-tree (x)
+ (if (null x)
+  0
+  (if (numberp x)
+	(+ x (sum-tree (cdr x)))
+	(+ (sum-tree x) (sum-tree (cdr x)))
+  )
+ )
+)
+
+(setf pen '((pen 2 5 pens) ((or 4 5) books)))
+
+;q10
+(defun flat (x)
+ (if (null x)
+  nil
+  (if (symbolp (car x))
+	(cons (car x) (flat (cdr x)))
+	(cons (flat (car x)) (flat (cdr x)))
+  )
+ )
+)
+
+(setf flist '(a (i ((u)) (e) o)))
