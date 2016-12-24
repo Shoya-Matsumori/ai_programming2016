@@ -18,5 +18,5 @@ listのlazy-evalを`'(? supports blk)`としてしまうと、blkが評価され
 ((shape brick) (color red) (size small))のようなリスト群となっているため、
 `reduce append`を用いてリストをflatにする。
 
-# q08
+## q08
 `some`関数はリスト各要素に少なくとも一つTがあればTを返す。
